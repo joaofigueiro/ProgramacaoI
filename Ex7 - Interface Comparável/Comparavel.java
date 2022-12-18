@@ -1,6 +1,6 @@
 interface Comparavel{
 
-    private boolean maior(Comparavel obj);
-    private boolean menor(Comparavel obj); 
-    private boolean igual(Comparavel obj);
+    public boolean maior(Comparavel obj);
+    public boolean menor(Comparavel obj); 
+    public boolean igual(Comparavel obj);
 }

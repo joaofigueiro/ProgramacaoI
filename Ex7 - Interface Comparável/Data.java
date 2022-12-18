@@ -1,28 +1,82 @@
 public class Data implements Comparavel{
 
-    int dia; 
-    int mes; 
-    int ano; 
+    private int dia; 
+    private int mes; 
+    private int ano; 
 
-    private Data(int d, int m, int a){
+    public String getData(){
+        return Integer.toString(this.dia)+Integer.toString(this.mes)+Integer.toString(this.ano); 
+    }
+
+    public void setData(int d, int m, int a){
         this.dia = d; 
         this.mes = m;
-        this.a = a;
+        this.ano = a;        
     }
 
-    private String getDataFormatada(){
-        return this.dia+'/'+this.mes+'/'+this.ano; 
+    public Data(int d, int m, int a){
+        this.dia = d; 
+        this.mes = m;
+        this.ano = a;
     }
 
-    private boolean maior(Comparavel obj){
-        
+    public String getDataFormatada(){
+        return Integer.toString(this.dia)+'/'+Integer.toString(this.mes)+'/'+Integer.toString(this.ano); 
     }
 
-    private boolean menor(Comparavel obj){
-
-    } 
-
-    private boolean igual(Comparavel obj){
-
+    public boolean igual (Comparavel obj){
+        Data dt = (Data) obj; 
+        if(this.dia == dt.dia && this.mes == dt.mes && this.ano == dt.ano) {
+            return true;
+        } else {
+            return false; 
+        }              
     }
+
+    public boolean maior (Comparavel obj){
+        Data dt = (Data) obj; 
+        if(this.ano > dt.ano){
+            return true;
+        } else if(this.ano == dt.ano){
+            if(this.mes > dt.mes){
+                return true;
+            } else if (this.mes == dt.mes){
+                if(this.dia > dt.dia){
+                    return true; 
+                } else if(this.dia == dt.dia){
+                    return false; 
+                } else {
+                    return false; 
+                }
+            } else {
+                return false; 
+            }
+        } else {
+            return false; 
+        }            
+    }
+
+    public boolean menor (Comparavel obj){
+        Data dt = (Data) obj; 
+        if(this.ano < dt.ano){
+            return true;
+        } else if(this.ano == dt.ano){
+            if(this.mes < dt.mes){
+                return true;
+            } else if (this.mes == dt.mes){
+                if(this.dia < dt.dia){
+                    return true; 
+                } else if(this.dia == dt.dia){
+                    return false; 
+                } else {
+                    return false; 
+                }
+            } else {
+                return false; 
+            }
+        } else {
+            return false; 
+        }            
+    }
+    
 }
