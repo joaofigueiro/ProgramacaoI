@@ -8,7 +8,7 @@ public class Post{
     private int dislikes; 
 
     public void show(){
-        System.out.println("Título: "+ this.title + "Data: "+this.date );
+        System.out.println("Título: " + this.title + "Data: "+this.date);
         System.out.println("Conteúdo: "+ this.content);
     }
 
@@ -32,7 +32,7 @@ public class Post{
         return this.likes; 
     }
 
-    public void dislike(){
+    public void setdislikes(){
         this.dislikes += 1; 
     }
 
