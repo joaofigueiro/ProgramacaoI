@@ -7,6 +7,6 @@ public class News extends Post {
 
     public void show(){
         super.show();
-        System.out.println("Soucer: "+this.source);  
+        System.out.println("Souce: " +this.source);  
     }
 }

@@ -1,6 +1,6 @@
 public class ProductReview extends Post implements Evaluable{
     private String brand; 
-    private Evaluable stars; 
+    private int stars; 
 
     public void show(){
         super.show();
@@ -15,11 +15,11 @@ public class ProductReview extends Post implements Evaluable{
         this.brand = brand; 
     }
 
-    public Evaluable getEvaluation(){
+    public int getEvaluation(){
         return this.stars; 
     }
 
-    public void Evaluate(Evaluable stars){
-        this.stars = stars; 
+    public void Evaluate(int stars){
+        this.stars = stars;
     } 
 }

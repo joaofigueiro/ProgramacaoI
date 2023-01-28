@@ -33,8 +33,11 @@ public class Blog extends Exception{
         } else if (p instanceof ProductReview){
             System.out.println("Informe a marca do produto:");
             String brand = new String(); 
-            brand = entrada.next();
+            brand = entrada.nextLine();
             ((ProductReview)p).setBrand(brand);
+            System.out.println("Informe a avaliação do produto de 1 a 10:");
+            int stars = entrada.nextInt();
+            ((ProductReview)p).Evaluate(stars);            
         } 
 
         p.setPost(titulo, content);
