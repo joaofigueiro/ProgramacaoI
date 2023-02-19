@@ -1,10 +1,13 @@
 
-import DBController.DBController;
 import data_base.connection.controllers.AlunoController;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -49,16 +52,16 @@ public class CadastroAluno extends javax.swing.JFrame {
         jtfDataNascimento = new com.toedter.calendar.JDateChooser();
         jlNomeErro = new javax.swing.JLabel();
         jlNomeErro.setVisible(false);
-        jlNomeErro1 = new javax.swing.JLabel();
-        jlNomeErro.setVisible(false);
-        jlNomeErro2 = new javax.swing.JLabel();
-        jlNomeErro.setVisible(false);
-        jlNomeErro3 = new javax.swing.JLabel();
-        jlNomeErro.setVisible(false);
-        jlNomeErro4 = new javax.swing.JLabel();
-        jlNomeErro.setVisible(false);
-        jlNomeErro5 = new javax.swing.JLabel();
-        jlNomeErro.setVisible(false);
+        jlEmailErro = new javax.swing.JLabel();
+        jlEmailErro.setVisible(false);
+        jlCidadeErro = new javax.swing.JLabel();
+        jlCidadeErro.setVisible(false);
+        jlAlturaErro = new javax.swing.JLabel();
+        jlAlturaErro.setVisible(false);
+        jlPesoErro = new javax.swing.JLabel();
+        jlPesoErro.setVisible(false);
+        jlDataNascimentoErro = new javax.swing.JLabel();
+        jlDataNascimentoErro.setVisible(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -122,40 +125,34 @@ public class CadastroAluno extends javax.swing.JFrame {
         jlNomeErro.setForeground(new java.awt.Color(255, 51, 51));
         jlNomeErro.setText("Preencha o campo de nome!");
 
-        jlNomeErro1.setForeground(new java.awt.Color(255, 51, 51));
-        jlNomeErro1.setText("Preencha o campo de e-mail!");
+        jlEmailErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlEmailErro.setText("Preencha o campo de e-mail!");
 
-        jlNomeErro2.setForeground(new java.awt.Color(255, 51, 51));
-        jlNomeErro2.setText("Preencha o campo de cidade!");
+        jlCidadeErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlCidadeErro.setText("Preencha o campo de cidade!");
 
-        jlNomeErro3.setForeground(new java.awt.Color(255, 51, 51));
-        jlNomeErro3.setText("Preencha o campo de Altura!");
+        jlAlturaErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlAlturaErro.setText("Preencha o campo de Altura!");
 
-        jlNomeErro4.setForeground(new java.awt.Color(255, 51, 51));
-        jlNomeErro4.setText("Preencha o campo de Peso!");
+        jlPesoErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlPesoErro.setText("Preencha o campo de Peso!");
 
-        jlNomeErro5.setForeground(new java.awt.Color(255, 51, 51));
-        jlNomeErro5.setText("Preencha o campo de data!");
+        jlDataNascimentoErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlDataNascimentoErro.setText("Preencha o campo de data!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(39, 39, 39))
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlNome)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlNomeErro4)
-                    .addComponent(jlNomeErro3)
+                    .addComponent(jlPesoErro)
+                    .addComponent(jlAlturaErro)
                     .addComponent(jlNomeErro)
-                    .addComponent(jlNomeErro1)
+                    .addComponent(jlEmailErro)
                     .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jtfNome, javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,19 +165,25 @@ public class CadastroAluno extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jtfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jlNomeErro2)
+                                        .addComponent(jlCidadeErro)
                                         .addComponent(jLabel4))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jlNomeErro5, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jlDataNascimentoErro, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(27, 27, 27)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                 .addComponent(jLabel3)
                                                 .addComponent(jtfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGap(0, 24, Short.MAX_VALUE))))
                 .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +199,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(jlNomeErro1)
+                .addComponent(jlEmailErro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -206,26 +209,26 @@ public class CadastroAluno extends javax.swing.JFrame {
                     .addComponent(jtfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlNomeErro2)
-                    .addComponent(jlNomeErro5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlDataNascimentoErro)
+                    .addComponent(jlCidadeErro))
                 .addGap(2, 2, 2)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jftfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlNomeErro3)
+                .addComponent(jlAlturaErro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(10, 10, 10)
                 .addComponent(jftfPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jlNomeErro4)
-                .addGap(1, 1, 1)
+                .addComponent(jlPesoErro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         pack();
@@ -252,28 +255,66 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfCidadeActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AlunoController aluno = new AlunoController("C:\\Users\\marqu\\OneDrive\\Área de Trabalho\\Arquivos de Programação\\programacao_i\\TrabalhoFinal\\src\\data_base\\connection\\banco_de_dados");
+        String erros = "";  
+        this.setAllLabelVisibilty(false);
+        Calendar calendar = (this.jtfDataNascimento.getCalendar());
+        System.out.println(calendar);
+        if (this.jtfNome.getText().isEmpty()){
+            erros += " Nome inválido\n";
+            this.jlNomeErro.setVisible(true);
+        }
+        if (this.jtfEmail.getText().isEmpty()){
+            erros += " Email inválido\n";
+            this.jlEmailErro.setVisible(true);
+        }
+        if (this.jtfCidade.getText().isEmpty()){
+            erros += " Cidade inválida\n";
+            this.jlCidadeErro.setVisible(true);
+        }
+        if (this.jtfDataNascimento.getDate() == null){
+            erros += " Data de nascimento inválida\n";
+            this.jlDataNascimentoErro.setVisible(true);
+        }
+        if (this.jftfAltura.getText().isEmpty()){
+            erros += " Altura inválida\n";
+            this.jlAlturaErro.setVisible(true);
+        }
+        if (this.jftfPeso.getText().isEmpty()){
+            erros += " Peso inválido\n";
+            this.jlPesoErro.setVisible(true);
+        }
+        
+//        if (!erros.isEmpty()){
+//            JOptionPane.showMessageDialog(rootPane, erros);
+//            return;
+//        }
+        
         String nome = this.jtfNome.getText();
         String email = this.jtfEmail.getText();
         String cidade = this.jtfCidade.getText();
-        this.jlNomeErro.setVisible(true);
-//        if ( this.jftfAltura.getText() == null ){
-//        
-//        }
-        
         float altura = Float.parseFloat(this.jftfAltura.getText());
         float peso = Float.parseFloat(this.jftfPeso.getText());
-        Date data = (this.jtfDataNascimento.getDate());
-        System.out.println(nome + ' ' + email + ' ' + cidade + ' ' + altura + ' ' + peso + ' ' + data.getDate() );
+//        Date data = (this.jtfDataNascimento.getDate());
+        AlunoController aluno = new AlunoController("C:\\Users\\marqu\\OneDrive\\Área de Trabalho\\Arquivos de Programação\\programacao_i\\TrabalhoFinal\\src\\connection\\banco_de_dados");
         try {
             aluno.conectar();
-            aluno.salvarAluno();
+            aluno.salvarAluno(nome, email, cidade, altura, peso, calendar);
+            System.out.println("salvo");
             aluno.desconectar();
         } catch (Exception e) {
             Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    private void setAllLabelVisibilty(boolean visibilidade) {
+        this.jlNomeErro.setVisible(visibilidade);
+        this.jlEmailErro.setVisible(visibilidade);
+        this.jlCidadeErro.setVisible(visibilidade);
+        this.jlDataNascimentoErro.setVisible(visibilidade);
+        this.jlAlturaErro.setVisible(visibilidade);
+        this.jlPesoErro.setVisible(visibilidade);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -319,13 +360,13 @@ public class CadastroAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JFormattedTextField jftfAltura;
     private javax.swing.JFormattedTextField jftfPeso;
+    private javax.swing.JLabel jlAlturaErro;
+    private javax.swing.JLabel jlCidadeErro;
+    private javax.swing.JLabel jlDataNascimentoErro;
+    private javax.swing.JLabel jlEmailErro;
     private javax.swing.JLabel jlNome;
     private javax.swing.JLabel jlNomeErro;
-    private javax.swing.JLabel jlNomeErro1;
-    private javax.swing.JLabel jlNomeErro2;
-    private javax.swing.JLabel jlNomeErro3;
-    private javax.swing.JLabel jlNomeErro4;
-    private javax.swing.JLabel jlNomeErro5;
+    private javax.swing.JLabel jlPesoErro;
     private javax.swing.JTextField jtfCidade;
     private com.toedter.calendar.JDateChooser jtfDataNascimento;
     private javax.swing.JTextField jtfEmail;

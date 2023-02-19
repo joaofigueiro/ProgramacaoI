@@ -24,22 +24,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jlNome" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="jlNomeErro4" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlNomeErro3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlPesoErro" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlAlturaErro" min="-2" max="-2" attributes="0"/>
                   <Component id="jlNomeErro" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlNomeErro1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlEmailErro" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jtfNome" alignment="0" max="32767" attributes="0"/>
@@ -52,13 +45,13 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jtfCidade" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Component id="jlNomeErro2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlCidadeErro" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jlNomeErro5" min="-2" pref="153" max="-2" attributes="0"/>
+                                          <Component id="jlDataNascimentoErro" min="-2" pref="153" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -70,11 +63,18 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -92,7 +92,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jtfEmail" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-              <Component id="jlNomeErro1" min="-2" max="-2" attributes="0"/>
+              <Component id="jlEmailErro" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -104,28 +104,28 @@
                   <Component id="jtfDataNascimento" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlNomeErro2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlNomeErro5" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jlDataNascimentoErro" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlCidadeErro" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jftfAltura" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jlNomeErro3" min="-2" max="-2" attributes="0"/>
+              <Component id="jlAlturaErro" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="jftfPeso" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="jlNomeErro4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Component id="jlPesoErro" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="110" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -224,7 +224,7 @@
         <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlNomeErro.setVisible(false);&#xd;&#xa;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlNomeErro1">
+    <Component class="javax.swing.JLabel" name="jlEmailErro">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -232,10 +232,10 @@
         <Property name="text" type="java.lang.String" value="Preencha o campo de e-mail!"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlNomeErro.setVisible(false);&#xd;&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlEmailErro.setVisible(false);&#xd; "/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlNomeErro2">
+    <Component class="javax.swing.JLabel" name="jlCidadeErro">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -243,10 +243,10 @@
         <Property name="text" type="java.lang.String" value="Preencha o campo de cidade!"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlNomeErro.setVisible(false);&#xd;&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlCidadeErro.setVisible(false);&#xd; "/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlNomeErro3">
+    <Component class="javax.swing.JLabel" name="jlAlturaErro">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -254,10 +254,10 @@
         <Property name="text" type="java.lang.String" value="Preencha o campo de Altura!"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlNomeErro.setVisible(false);&#xd;&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlAlturaErro.setVisible(false);&#xd; "/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlNomeErro4">
+    <Component class="javax.swing.JLabel" name="jlPesoErro">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -265,10 +265,10 @@
         <Property name="text" type="java.lang.String" value="Preencha o campo de Peso!"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlNomeErro.setVisible(false);&#xd;&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlPesoErro.setVisible(false);&#xd; "/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlNomeErro5">
+    <Component class="javax.swing.JLabel" name="jlDataNascimentoErro">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -276,7 +276,7 @@
         <Property name="text" type="java.lang.String" value="Preencha o campo de data!"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlNomeErro.setVisible(false);&#xd;&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlDataNascimentoErro.setVisible(false);&#xd; "/>
       </AuxValues>
     </Component>
   </SubComponents>

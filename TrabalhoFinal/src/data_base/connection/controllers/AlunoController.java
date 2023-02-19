@@ -4,6 +4,7 @@
  */
 package data_base.connection.controllers;
 
+import java.util.*;
 import connection.DBConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,18 +19,39 @@ public class AlunoController extends DBConnection {
         super(dbName);
     }
     
+    public String formataDataIso(Calendar calendar) {
+        String dataFinal; 
+        dataFinal = calendar.get(Calendar.YEAR) + "-" 
+                + calendar.get(Calendar.MONTH) + "-"
+                + calendar.get(Calendar.DAY_OF_MONTH);
+        return dataFinal;
+    }
     
-    public void salvarAluno() throws Exception {
+    /**
+     * Faz o insert e update da tabela alunos
+     * inserindo um novo cadastro
+     * @param nome - sTring nome
+     * @param email - string email
+     * @param cidade - string cidade 
+     * @param altura - float altura
+     * @param peso - float peso
+     * @param data - String com a data de nascimento
+     * @throws Exception
+     */
+    public void salvarAluno(String nome, String email, String cidade, float altura, float peso, Calendar calendar ) throws Exception {
         String insert = "INSERT INTO alunos (nome, email, cidade, altura, peso, data_nascimento) VALUES(?, ?, ?, ?, ?, ?)";
+        String dataFormatada = this.formataDataIso(calendar);
+//        String dataFormatada = data.getYear();
+        System.out.println(dataFormatada);
         PreparedStatement stmt;
         try {
             stmt = this.dbConn.prepareStatement(insert);
-            stmt.setString(1, "insert");
-            stmt.setString(2, "insert");
-            stmt.setString(3, "insert");
-            stmt.setFloat(4, 56);
-            stmt.setFloat(5, 70);
-            stmt.setString(6, "insert");
+            stmt.setString(1, nome);
+            stmt.setString(2, email);
+            stmt.setString(3, cidade);
+            stmt.setFloat(4, altura);
+            stmt.setFloat(5, peso);
+            stmt.setString(6, dataFormatada);
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new Exception("Erro ao inserir dado: " + e.getMessage());
