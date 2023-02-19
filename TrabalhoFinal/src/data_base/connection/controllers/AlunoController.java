@@ -21,8 +21,9 @@ public class AlunoController extends DBConnection {
     
     public String formataDataIso(Calendar calendar) {
         String dataFinal; 
+        int mes = calendar.get(Calendar.MONTH) + 1;
         dataFinal = calendar.get(Calendar.YEAR) + "-" 
-                + calendar.get(Calendar.MONTH) + "-"
+                + mes + "-"
                 + calendar.get(Calendar.DAY_OF_MONTH);
         return dataFinal;
     }

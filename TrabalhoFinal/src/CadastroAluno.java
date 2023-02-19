@@ -120,8 +120,6 @@ public class CadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jtfDataNascimento.setDateFormatString("dd/MM/YYYY");
-
         jlNomeErro.setForeground(new java.awt.Color(255, 51, 51));
         jlNomeErro.setText("Preencha o campo de nome!");
 
@@ -258,7 +256,6 @@ public class CadastroAluno extends javax.swing.JFrame {
         String erros = "";  
         this.setAllLabelVisibilty(false);
         Calendar calendar = (this.jtfDataNascimento.getCalendar());
-        System.out.println(calendar);
         if (this.jtfNome.getText().isEmpty()){
             erros += " Nome inválido\n";
             this.jlNomeErro.setVisible(true);
