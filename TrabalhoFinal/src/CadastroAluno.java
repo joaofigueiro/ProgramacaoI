@@ -1,3 +1,14 @@
+
+import data_base.connection.controllers.AlunoController;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -25,39 +36,50 @@ public class CadastroAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jlNome = new javax.swing.JLabel();
+        jtfNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtfEmail = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jftfPeso = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jftfAltura = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jtfCidade = new javax.swing.JTextField();
+        jbLimpar = new javax.swing.JButton();
+        jbCadastrar = new javax.swing.JButton();
+        jtfDataNascimento = new com.toedter.calendar.JDateChooser();
+        jlNomeErro = new javax.swing.JLabel();
+        jlNomeErro.setVisible(false);
+        jlEmailErro = new javax.swing.JLabel();
+        jlEmailErro.setVisible(false);
+        jlCidadeErro = new javax.swing.JLabel();
+        jlCidadeErro.setVisible(false);
+        jlAlturaErro = new javax.swing.JLabel();
+        jlAlturaErro.setVisible(false);
+        jlPesoErro = new javax.swing.JLabel();
+        jlPesoErro.setVisible(false);
+        jlDataNascimentoErro = new javax.swing.JLabel();
+        jlDataNascimentoErro.setVisible(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jDateChooser1.setDateFormatString("ddMMyyyy");
+        jlNome.setText("Nome Completo:");
 
-        jLabel1.setText("Nome Completo:");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtfNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtfNomeActionPerformed(evt);
             }
         });
 
         jLabel2.setText("E-mail:");
 
-        jTextField2.setToolTipText("Informe seu e-mail. Ex: user.account@example.com");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jtfEmail.setToolTipText("Informe seu e-mail. Ex: user.account@example.com");
+        jtfEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jtfEmailActionPerformed(evt);
             }
         });
 
@@ -65,137 +87,240 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         jLabel4.setText("Altura:");
 
-        jFormattedTextField1.setToolTipText("Informe sua altura em metros. Ex: 1,85");
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jftfPeso.setToolTipText("Informe sua altura em metros. Ex: 1,85");
+        jftfPeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                jftfPesoActionPerformed(evt);
             }
         });
 
         jLabel5.setText("Peso:");
 
-        jFormattedTextField2.setToolTipText("Informe sua altura em metros. Ex: 1,85");
-        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jftfAltura.setToolTipText("Informe sua altura em metros. Ex: 1,85");
+        jftfAltura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField2ActionPerformed(evt);
+                jftfAlturaActionPerformed(evt);
             }
         });
 
         jLabel6.setText("Cidade:");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jtfCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jtfCidadeActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Limpar");
-
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbLimpar.setText("Limpar");
+        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbLimparActionPerformed(evt);
             }
         });
+
+        jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
+
+        jlNomeErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlNomeErro.setText("Preencha o campo de nome!");
+
+        jlEmailErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlEmailErro.setText("Preencha o campo de e-mail!");
+
+        jlCidadeErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlCidadeErro.setText("Preencha o campo de cidade!");
+
+        jlAlturaErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlAlturaErro.setText("Preencha o campo de Altura!");
+
+        jlPesoErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlPesoErro.setText("Preencha o campo de Peso!");
+
+        jlDataNascimentoErro.setForeground(new java.awt.Color(255, 51, 51));
+        jlDataNascimentoErro.setText("Preencha o campo de data!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3))
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 39, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(39, 39, 39))
+                .addComponent(jbCadastrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbLimpar)
+                .addGap(48, 48, 48))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jtfNome, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtfEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlNome, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlPesoErro, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlAlturaErro, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlNomeErro, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlEmailErro, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jftfAltura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jftfPeso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlCidadeErro)
+                            .addComponent(jLabel4))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jlDataNascimentoErro, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1)
+                .addComponent(jlNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jlNomeErro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jlEmailErro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jtfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlDataNascimentoErro)
+                    .addComponent(jlCidadeErro))
+                .addGap(2, 2, 2)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jftfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlAlturaErro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(10, 10, 10)
-                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jftfPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jlPesoErro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(jbLimpar)
+                    .addComponent(jbCadastrar))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtfNomeActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jtfEmailActionPerformed
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void jftfPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jftfPesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_jftfPesoActionPerformed
 
-    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
+    private void jftfAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jftfAlturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
+    }//GEN-LAST:event_jftfAlturaActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jtfCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jtfCidadeActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        String erros = "";  
+        this.setAllLabelVisibilty(false);
+        if (this.jtfNome.getText().isEmpty()){
+            erros += " Nome inválido\n";
+            this.jlNomeErro.setVisible(true);
+        }
+        if (this.jtfEmail.getText().isEmpty()){
+            erros += " Email inválido\n";
+            this.jlEmailErro.setVisible(true);
+        }
+        if (this.jtfCidade.getText().isEmpty()){
+            erros += " Cidade inválida\n";
+            this.jlCidadeErro.setVisible(true);
+        }
+        if (this.jtfDataNascimento.getDate() == null){
+            erros += " Data de nascimento inválida\n";
+            this.jlDataNascimentoErro.setVisible(true);
+        }
+        if (this.jftfAltura.getText().isEmpty()){
+            erros += " Altura inválida\n";
+            this.jlAlturaErro.setVisible(true);
+        }
+        if (this.jftfPeso.getText().isEmpty()){
+            erros += " Peso inválido\n";
+            this.jlPesoErro.setVisible(true);
+        }
+        
+        if (!erros.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, erros);
+            return;
+        }
 
+        String nome = this.jtfNome.getText();
+        String email = this.jtfEmail.getText();
+        String cidade = this.jtfCidade.getText();
+        Calendar calendar = (this.jtfDataNascimento.getCalendar());
+        float altura = Float.parseFloat(this.jftfAltura.getText());
+        float peso = Float.parseFloat(this.jftfPeso.getText());
+        AlunoController aluno = new AlunoController("C:\\Users\\marqu\\OneDrive\\Área de Trabalho\\Arquivos de Programação\\programacao_i\\TrabalhoFinal\\src\\connection\\banco_de_dados");
+        try {
+            aluno.conectar();
+            aluno.salvarAluno(nome, email, cidade, altura, peso, calendar);
+            System.out.println("salvo");
+            aluno.desconectar();
+        } catch (Exception e) {
+            Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jbCadastrarActionPerformed
+
+    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
+        this.clearAll();
+    }//GEN-LAST:event_jbLimparActionPerformed
+    
+    private void clearAll() {
+       this.jtfNome.setText("");
+       this.jtfEmail.setText("");
+       this.jtfCidade.setText("");
+       this.jtfDataNascimento.setDateFormatString("");
+       this.jftfAltura.setText("");       
+       this.jftfPeso.setText("");
+    }
+    
+    private void setAllLabelVisibilty(boolean visibilidade) {
+        this.jlNomeErro.setVisible(visibilidade);
+        this.jlEmailErro.setVisible(visibilidade);
+        this.jlCidadeErro.setVisible(visibilidade);
+        this.jlDataNascimentoErro.setVisible(visibilidade);
+        this.jlAlturaErro.setVisible(visibilidade);
+        this.jlPesoErro.setVisible(visibilidade);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -232,19 +357,25 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton jbCadastrar;
+    private javax.swing.JButton jbLimpar;
+    private javax.swing.JFormattedTextField jftfAltura;
+    private javax.swing.JFormattedTextField jftfPeso;
+    private javax.swing.JLabel jlAlturaErro;
+    private javax.swing.JLabel jlCidadeErro;
+    private javax.swing.JLabel jlDataNascimentoErro;
+    private javax.swing.JLabel jlEmailErro;
+    private javax.swing.JLabel jlNome;
+    private javax.swing.JLabel jlNomeErro;
+    private javax.swing.JLabel jlPesoErro;
+    private javax.swing.JTextField jtfCidade;
+    private com.toedter.calendar.JDateChooser jtfDataNascimento;
+    private javax.swing.JTextField jtfEmail;
+    private javax.swing.JTextField jtfNome;
     // End of variables declaration//GEN-END:variables
 }
