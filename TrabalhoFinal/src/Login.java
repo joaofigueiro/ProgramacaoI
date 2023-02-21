@@ -34,10 +34,10 @@ public class Login extends javax.swing.JFrame {
         jtfEmail = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jtbNovoUsuario = new javax.swing.JButton();
         jtbLimpar = new javax.swing.JToggleButton();
         jtbLogar = new javax.swing.JToggleButton();
         jpfSenha = new javax.swing.JPasswordField();
+        jtbNovoUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,7 +45,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Login");
 
-        jtfEmail.setText("Insira seu e-mail...");
+        jtfEmail.setToolTipText("Insira seu e-mail...");
         jtfEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfEmailActionPerformed(evt);
@@ -55,17 +55,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("E-mail:");
 
         jLabel3.setText("Senha:");
-
-        jtbNovoUsuario.setBackground(new java.awt.Color(242, 242, 242));
-        jtbNovoUsuario.setFont(new java.awt.Font("Fira Sans", 0, 12)); // NOI18N
-        jtbNovoUsuario.setForeground(new java.awt.Color(51, 102, 255));
-        jtbNovoUsuario.setText("Novo usuario?");
-        jtbNovoUsuario.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jtbNovoUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtbNovoUsuarioActionPerformed(evt);
-            }
-        });
 
         jtbLimpar.setText("Limpar");
         jtbLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,10 +70,24 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jpfSenha.setText("jPasswordField1");
+        jpfSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jpfSenha.setToolTipText("");
         jpfSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jpfSenhaActionPerformed(evt);
+            }
+        });
+
+        jtbNovoUsuario.setBackground(new java.awt.Color(242, 242, 242));
+        jtbNovoUsuario.setFont(new java.awt.Font("Fira Sans", 2, 10)); // NOI18N
+        jtbNovoUsuario.setForeground(new java.awt.Color(51, 102, 255));
+        jtbNovoUsuario.setText("Novo usuário?");
+        jtbNovoUsuario.setToolTipText("");
+        jtbNovoUsuario.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jtbNovoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jtbNovoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbNovoUsuarioActionPerformed(evt);
             }
         });
 
@@ -98,9 +101,8 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jtbNovoUsuario))
-                        .addGap(312, 312, 312))
+                            .addComponent(jLabel3))
+                        .addGap(344, 344, 344))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jtbLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -112,7 +114,10 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jtbNovoUsuario)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,7 +135,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtbNovoUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtbLimpar)
                     .addComponent(jtbLogar))
@@ -151,10 +156,11 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtbNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbNovoUsuarioActionPerformed
@@ -179,6 +185,18 @@ public class Login extends javax.swing.JFrame {
         System.out.println(patternMatches(email, "^(.+)@(\\S+)$"));
         System.out.println(isPasswordCorrect(senha));
         //  System.out.println(senha + " ");
+        
+        if(patternMatches(email, "^(.+)@(\\S+)$")){
+            if(isPasswordCorrect(senha)){
+               new Menu().setVisible(true);
+               dispose();
+            } else {
+                System.out.println("Senha inválida");
+            }
+        } else {
+            System.out.println("E-mail inválido");
+        }
+        
     }//GEN-LAST:event_jtbLogarActionPerformed
     
     public static boolean patternMatches(String emailAddress, String regexPattern) {
