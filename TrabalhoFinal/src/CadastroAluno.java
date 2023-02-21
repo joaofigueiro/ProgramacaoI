@@ -63,7 +63,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         jlDataNascimentoErro = new javax.swing.JLabel();
         jlDataNascimentoErro.setVisible(false);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Aluno");
         setResizable(false);
 
         jlNome.setText("Nome Completo:");
@@ -124,6 +124,8 @@ public class CadastroAluno extends javax.swing.JFrame {
                 jbCadastrarActionPerformed(evt);
             }
         });
+
+        jtfDataNascimento.setDateFormatString("d'/'m'/' y");
 
         jlNomeErro.setForeground(new java.awt.Color(255, 51, 51));
         jlNomeErro.setText("Preencha o campo de nome!");
