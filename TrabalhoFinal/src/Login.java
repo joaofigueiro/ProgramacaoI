@@ -38,6 +38,8 @@ public class Login extends javax.swing.JFrame {
         jtbLogar = new javax.swing.JToggleButton();
         jpfSenha = new javax.swing.JPasswordField();
         jtbNovoUsuario = new javax.swing.JButton();
+        lbInvalidEmail = new javax.swing.JLabel();
+        lbInvalidPassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,23 +93,22 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        lbInvalidEmail.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lbInvalidEmail.setForeground(new java.awt.Color(255, 0, 51));
+        lbInvalidEmail.setText("E-mail inválido!");
+
+        lbInvalidPassword.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lbInvalidPassword.setForeground(new java.awt.Color(255, 0, 51));
+        lbInvalidPassword.setText("Senha inválida!");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(344, 344, 344))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jtbLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtbLogar)
-                        .addGap(86, 86, 86))))
+                .addComponent(jLabel2)
+                .addGap(344, 344, 344))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -116,9 +117,20 @@ public class Login extends javax.swing.JFrame {
                         .addGap(148, 148, 148)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jtbNovoUsuario)))
+                        .addGap(15, 15, 15)
+                        .addComponent(jtbNovoUsuario)
+                        .addGap(83, 83, 83)
+                        .addComponent(jtbLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtbLogar)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(lbInvalidEmail)
+                    .addComponent(lbInvalidPassword))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,18 +141,24 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(lbInvalidEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtbNovoUsuario)
-                .addGap(12, 12, 12)
+                .addComponent(lbInvalidPassword)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtbLimpar)
-                    .addComponent(jtbLogar))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(jtbLogar)
+                    .addComponent(jtbNovoUsuario))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
+
+        lbInvalidEmail.setVisible(false);
+        lbInvalidPassword.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +174,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,7 +182,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtbNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbNovoUsuarioActionPerformed
-        // TODO add your handling code here:
+        new CadastroUsuario().setVisible(true);
     }//GEN-LAST:event_jtbNovoUsuarioActionPerformed
 
     private void jtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmailActionPerformed
@@ -181,20 +199,21 @@ public class Login extends javax.swing.JFrame {
         char[] senha;
         
         senha = (this.jpfSenha.getPassword());
-        System.out.println("Login.jtbLogarActionPerformed()");
-        System.out.println(patternMatches(email, "^(.+)@(\\S+)$"));
-        System.out.println(isPasswordCorrect(senha));
+        //System.out.println("Login.jtbLogarActionPerformed()");
+        //System.out.println(patternMatches(email, "^(.+)@(\\S+)$"));
+        //System.out.println(isPasswordCorrect(senha));
         //  System.out.println(senha + " ");
         
         if(patternMatches(email, "^(.+)@(\\S+)$")){
+            lbInvalidEmail.setVisible(false);
             if(isPasswordCorrect(senha)){
                new Menu().setVisible(true);
                dispose();
             } else {
-                System.out.println("Senha inválida");
+                lbInvalidPassword.setVisible(true);
             }
         } else {
-            System.out.println("E-mail inválido");
+            lbInvalidEmail.setVisible(true);
         }
         
     }//GEN-LAST:event_jtbLogarActionPerformed
@@ -270,5 +289,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JToggleButton jtbLogar;
     private javax.swing.JButton jtbNovoUsuario;
     private javax.swing.JTextField jtfEmail;
+    private javax.swing.JLabel lbInvalidEmail;
+    private javax.swing.JLabel lbInvalidPassword;
     // End of variables declaration//GEN-END:variables
 }
