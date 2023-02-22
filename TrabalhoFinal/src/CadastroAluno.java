@@ -20,6 +20,8 @@ import javax.swing.JOptionPane;
  */
 public class CadastroAluno extends javax.swing.JFrame {
 
+    private static String dbName = "C:\\Users\\marqu\\OneDrive\\Área de Trabalho\\Arquivos de Programação\\programacao_i\\TrabalhoFinal\\src\\connection\\banco_de_dados";
+    
     /**
      * Creates new form CadastroAluno
      */
@@ -48,7 +50,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jtfCidade = new javax.swing.JTextField();
         jbLimpar = new javax.swing.JButton();
-        jbCadastrar = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
         jtfDataNascimento = new com.toedter.calendar.JDateChooser();
         jlNomeErro = new javax.swing.JLabel();
         jlNomeErro.setVisible(false);
@@ -118,10 +120,10 @@ public class CadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jbCadastrar.setText("Cadastrar");
-        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCadastrarActionPerformed(evt);
+                btnCadastrarActionPerformed(evt);
             }
         });
 
@@ -177,7 +179,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbCadastrar)
+                .addComponent(btnCadastrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbLimpar)
                 .addGap(48, 48, 48))
@@ -223,7 +225,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                 .addComponent(jlPesoErro)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCadastrar)
+                    .addComponent(btnCadastrar)
                     .addComponent(jbLimpar))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -251,7 +253,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCidadeActionPerformed
 
-    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         String erros = "";  
         this.setAllLabelVisibilty(false);
         if (this.jtfNome.getText().isEmpty()){
@@ -290,16 +292,15 @@ public class CadastroAluno extends javax.swing.JFrame {
         Calendar calendar = (this.jtfDataNascimento.getCalendar());
         float altura = Float.parseFloat(this.jftfAltura.getText());
         float peso = Float.parseFloat(this.jftfPeso.getText());
-        AlunoController aluno = new AlunoController("C:\\Users\\marqu\\OneDrive\\Área de Trabalho\\Arquivos de Programação\\programacao_i\\TrabalhoFinal\\src\\connection\\banco_de_dados");
+        AlunoController aluno = new AlunoController(this.dbName);
         try {
             aluno.conectar();
             aluno.salvarAluno(nome, email, cidade, altura, peso, calendar);
-            System.out.println("salvo");
             aluno.desconectar();
         } catch (Exception e) {
             Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, e);
         }
-    }//GEN-LAST:event_jbCadastrarActionPerformed
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
         this.clearAll();
@@ -359,12 +360,12 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JButton jbCadastrar;
     private javax.swing.JButton jbLimpar;
     private javax.swing.JFormattedTextField jftfAltura;
     private javax.swing.JFormattedTextField jftfPeso;

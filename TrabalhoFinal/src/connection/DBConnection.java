@@ -36,7 +36,6 @@ public class DBConnection {
         if (!this.dbConn.isClosed()) {
             this.dbConn.close();
         }
-        System.out.println("fecho");
         
     }
     
