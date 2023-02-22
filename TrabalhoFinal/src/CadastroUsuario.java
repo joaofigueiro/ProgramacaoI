@@ -1,3 +1,5 @@
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -7,7 +9,7 @@
  *
  * @author Granter
  */
-public class CadastroUsuario extends javax.swing.JFrame {
+public class CadastroUsuario extends javax.swing.JFrame{
 
     /**
      * Creates new form CadastroUsuario
@@ -30,7 +32,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         lbsPassword = new javax.swing.JLabel();
         tfPassword = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
         lbInvalidEmail = new javax.swing.JLabel();
         lbInvalidPassword = new javax.swing.JLabel();
 
@@ -50,10 +52,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnSave.setText("Salvar");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrar.setText("Salvar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
+                btnCadastrarActionPerformed(evt);
             }
         });
 
@@ -80,7 +82,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSave)
+                        .addComponent(btnCadastrar)
                         .addGap(46, 46, 46))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +113,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
-                    .addComponent(btnSave))
+                    .addComponent(btnCadastrar))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -125,7 +127,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         return emailAddress.matches(regexPattern);
     }
     
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         
         String email = this.tfEmail.getText();
         
@@ -139,7 +141,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         } else {
             this.lbInvalidEmail.setVisible(true);
         }        
-    }//GEN-LAST:event_btnSaveActionPerformed
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
@@ -182,7 +184,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbInvalidEmail;
     private javax.swing.JLabel lbInvalidPassword;

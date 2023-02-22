@@ -199,8 +199,6 @@ public class Login extends javax.swing.JFrame {
         char[] senha;
         
         senha = (this.jpfSenha.getPassword());
-        //System.out.println("Login.jtbLogarActionPerformed()");
-        //System.out.println(patternMatches(email, "^(.+)@(\\S+)$"));
         //System.out.println(isPasswordCorrect(senha));
         //  System.out.println(senha + " ");
         

@@ -6,8 +6,7 @@ package data_base.connection.controllers;
 
 import java.util.*;
 import connection.DBConnection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  *
@@ -43,7 +42,6 @@ public class AlunoController extends DBConnection {
         String insert = "INSERT INTO alunos (nome, email, cidade, altura, peso, data_nascimento) VALUES(?, ?, ?, ?, ?, ?)";
         String dataFormatada = this.formataDataIso(calendar);
 //        String dataFormatada = data.getYear();
-        System.out.println(dataFormatada);
         PreparedStatement stmt;
         try {
             stmt = this.dbConn.prepareStatement(insert);
@@ -57,5 +55,23 @@ public class AlunoController extends DBConnection {
         } catch (SQLException e) {
             throw new Exception("Erro ao inserir dado: " + e.getMessage());
         }
+    }
+    
+    /**
+     * Faz select em todos os alunos cadastrados no banco
+     * @throws java.lang.Exception
+     * @param - void
+     * @return 
+     */
+    public ResultSet getAlunos()throws Exception {
+        String sel = "SELECT nome FROM alunos";
+        ResultSet rset = null;
+        try {
+            Statement stmt = this.dbConn.createStatement();
+            rset = stmt.executeQuery(sel);
+        } catch (SQLException e) {
+            throw new Exception("Erro ao pegar dado: " + e.getMessage());
+        }
+        return rset;
     }
 }
