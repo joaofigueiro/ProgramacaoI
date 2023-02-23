@@ -64,7 +64,7 @@ public class AlunoController extends DBConnection {
      * @return 
      */
     public ResultSet getAlunos()throws Exception {
-        String sel = "SELECT nome FROM alunos";
+        String sel = "SELECT codigo_aluno, nome FROM alunos ORDER BY codigo_aluno";
         ResultSet rset = null;
         try {
             Statement stmt = this.dbConn.createStatement();
