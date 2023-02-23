@@ -1,3 +1,7 @@
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -107,7 +111,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void RibbonTreinos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RibbonTreinos
         
-        new CadastroTreino().setVisible(true);
+        try {
+            new CadastroTreino().setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_RibbonTreinos
 
