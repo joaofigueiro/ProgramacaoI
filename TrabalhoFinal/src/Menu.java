@@ -3,7 +3,10 @@ import data_base.connection.controllers.*;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -107,8 +110,8 @@ public class Menu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         AbaAlunos.addTab("Treinos", jPanel1);
@@ -148,7 +151,7 @@ public class Menu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -180,8 +183,8 @@ public class Menu extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         AbaAlunos.addTab("Exercícios", jPanel3);
@@ -237,7 +240,7 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(AbaAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AbaAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
@@ -278,6 +281,9 @@ public class Menu extends javax.swing.JFrame {
         ResultSet rset = aluno.getAlunos();
         
         DefaultTableModel model = new DefaultTableModel(new String[]{"Código", "Nome", "E-mail", "Cidade", "Altura", "Peso", "Data Nasc"}, 0);
+        RowSorter<TableModel> sorter = new TableRowSorter<>(model);
+        jtAluno.setRowSorter(sorter);
+        
         while(rset.next()) {
             //model.addRow(new Object[]{rset.getString("codigo_aluno")});
             model.addRow(new Object[] {
@@ -303,6 +309,9 @@ public class Menu extends javax.swing.JFrame {
             
             ResultSet rset = exerc.getExerc();
             DefaultTableModel model = new DefaultTableModel(new String[]{"Código", "Exercicio"}, 0);
+            RowSorter<TableModel> sorter = new TableRowSorter<>(model);
+            jtExercicio.setRowSorter(sorter);
+            
             while(rset.next()) {
                 model.addRow(new Object[]{
                     rset.getString("codigo_exercicio"),
@@ -322,9 +331,12 @@ public class Menu extends javax.swing.JFrame {
     try {
         TreinoController treino = new TreinoController(this.dbName);
         treino.conectar();
-
+        
         ResultSet rset = treino.getTreinoAlunos();
         DefaultTableModel model = new DefaultTableModel(new String[]{"Aluno", "Treino", "Exercício", "Séries", "Repetições"}, 0);
+        RowSorter<TableModel> sorter = new TableRowSorter<>(model);
+        jtTreinos.setRowSorter(sorter);
+                
         while(rset.next()) {
             model.addRow(new Object[]{
                 rset.getString("nome"),
