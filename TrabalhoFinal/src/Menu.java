@@ -1,6 +1,9 @@
 
+import data_base.connection.controllers.*;
+import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,11 +16,29 @@ import java.util.logging.Logger;
  */
 public class Menu extends javax.swing.JFrame {
 
+    private static String dbName = "C:\\Users\\joaol\\OneDrive\\Documentos\\Trabalhos Faculdade\\programacao_i\\TrabalhoFinal\\src\\connection\\banco_de_dados";
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        try {
+            getAlunos();
+        } catch (Exception ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            getExerc();
+        } catch (Exception ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            getTreinos();
+        } catch (Exception ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -29,6 +50,16 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        AbaAlunos = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtTreinos = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtAluno = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtExercicio = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -39,6 +70,121 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Power Workouts");
         setResizable(false);
+
+        AbaAlunos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jtTreinos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Aluno", "Treino", "Exercício", "Séries", "Repetições"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jtTreinos);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        AbaAlunos.addTab("Treinos", jPanel1);
+
+        jtAluno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Nome", "E-mail", "Cidade", "Altura", "Peso", "Data Nasc"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jtAluno);
+        if (jtAluno.getColumnModel().getColumnCount() > 0) {
+            jtAluno.getColumnModel().getColumn(0).setMaxWidth(1000);
+            jtAluno.getColumnModel().getColumn(1).setMaxWidth(200);
+        }
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        AbaAlunos.addTab("Alunos", jPanel2);
+
+        jtExercicio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Código", "Nome"
+            }
+        ));
+        jScrollPane3.setViewportView(jtExercicio);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        AbaAlunos.addTab("Exercícios", jPanel3);
 
         jMenu1.setText("Menu");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,11 +228,17 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(AbaAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 339, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(AbaAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,6 +271,78 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_RibbonTreinos
 
+    private void getAlunos() throws Exception {
+        AlunoController aluno = new AlunoController(this.dbName);
+        aluno.conectar();
+
+        ResultSet rset = aluno.getAlunos();
+        
+        DefaultTableModel model = new DefaultTableModel(new String[]{"Código", "Nome", "E-mail", "Cidade", "Altura", "Peso", "Data Nasc"}, 0);
+        while(rset.next()) {
+            //model.addRow(new Object[]{rset.getString("codigo_aluno")});
+            model.addRow(new Object[] {
+                rset.getString("codigo_aluno"), 
+                rset.getString("nome"),
+                rset.getString("email"),
+                rset.getString("cidade"),
+                rset.getString("altura"),
+                rset.getString("peso"),
+                rset.getString("data_nascimento"),
+            });
+        }
+        
+        jtAluno.setModel(model);
+        aluno.desconectar();
+        
+    }
+    
+    private void getExerc() throws Exception {
+        try {
+            ExercicioController exerc = new ExercicioController(this.dbName);
+            exerc.conectar();
+            
+            ResultSet rset = exerc.getExerc();
+            DefaultTableModel model = new DefaultTableModel(new String[]{"Código", "Exercicio"}, 0);
+            while(rset.next()) {
+                model.addRow(new Object[]{
+                    rset.getString("codigo_exercicio"),
+                    rset.getString("nome_exercicio")
+                });
+            }
+            
+            jtExercicio.setModel(model);
+            exerc.desconectar();
+            
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroTreino.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void getTreinos() throws Exception {
+    try {
+        TreinoController treino = new TreinoController(this.dbName);
+        treino.conectar();
+
+        ResultSet rset = treino.getTreinoAlunos();
+        DefaultTableModel model = new DefaultTableModel(new String[]{"Aluno", "Treino", "Exercício", "Séries", "Repetições"}, 0);
+        while(rset.next()) {
+            model.addRow(new Object[]{
+                rset.getString("nome"),
+                rset.getString("treino_nome"),
+                rset.getString("nome_exercicio"),
+                rset.getString("treino_series"),
+                rset.getString("treino_repeticao")
+            });
+        }
+
+        jtTreinos.setModel(model);
+        treino.desconectar();
+
+    } catch (Exception ex) {
+        Logger.getLogger(CadastroTreino.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -155,11 +379,21 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane AbaAlunos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jtAluno;
+    private javax.swing.JTable jtExercicio;
+    private javax.swing.JTable jtTreinos;
     // End of variables declaration//GEN-END:variables
 }

@@ -39,7 +39,7 @@ public class ExercicioController extends DBConnection {
      * @return 
      */
     public ResultSet getExerc() throws Exception {
-        String sel = "SELECT nome_exercicio FROM exercicios";
+        String sel = "SELECT codigo_exercicio, nome_exercicio FROM exercicios WHERE codigo_treino IS NULL";
         ResultSet rset = null;
         try {
             Statement stmt = this.dbConn.createStatement();

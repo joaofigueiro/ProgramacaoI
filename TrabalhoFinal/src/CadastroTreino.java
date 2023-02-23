@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CadastroTreino extends javax.swing.JFrame {
 
-    private static String dbName = "C:\\Users\\marqu\\OneDrive\\Área de Trabalho\\Arquivos de Programação\\programacao_i\\TrabalhoFinal\\src\\connection\\banco_de_dados";
+    private static String dbName = "C:\\Users\\joaol\\OneDrive\\Documentos\\Trabalhos Faculdade\\programacao_i\\TrabalhoFinal\\src\\connection\\banco_de_dados";
     /**
      * Creates new form CadastroTreino
      */
