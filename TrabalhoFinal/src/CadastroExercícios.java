@@ -15,11 +15,16 @@ import java.util.logging.Logger;
 public class CadastroExercícios extends javax.swing.JFrame {
 
     private static String dbName = "C:\\Users\\marqu\\OneDrive\\Área de Trabalho\\Arquivos de Programação\\programacao_i\\TrabalhoFinal\\src\\connection\\banco_de_dados";
-
+    private int codigoTreino;
     /**
      * Creates new form CadastroExercícios
      */
     public CadastroExercícios() {
+        initComponents();
+    }
+    
+    public CadastroExercícios(int codigoTreino) {
+        this.codigoTreino = codigoTreino;
         initComponents();
     }
 
@@ -35,9 +40,7 @@ public class CadastroExercícios extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jtfExerc = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -46,8 +49,6 @@ public class CadastroExercícios extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Nome do Exercício:");
 
-        jButton1.setText("Excluir");
-
         btnCadastrar.setText("Salvar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,27 +56,19 @@ public class CadastroExercícios extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("No caso vou colocar esse botão de excluir em uma tabela futuramente, ficaria mais prático de usar do que dentro desse modal ;)");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfExerc, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCadastrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfExerc, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,12 +77,8 @@ public class CadastroExercícios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtfExerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnCadastrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(btnCadastrar)
                 .addContainerGap())
         );
 
@@ -101,7 +90,7 @@ public class CadastroExercícios extends javax.swing.JFrame {
         ExercicioController exercicio = new ExercicioController(this.dbName);
         try {
             exercicio.conectar();
-            exercicio.salvaExercicio(exerc);
+            exercicio.salvaExercicio(exerc, this.codigoTreino);
             exercicio.desconectar();
         } catch (Exception ex) {
             Logger.getLogger(CadastroExercícios.class.getName()).log(Level.SEVERE, null, ex);
@@ -145,10 +134,8 @@ public class CadastroExercícios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jtfExerc;
     // End of variables declaration//GEN-END:variables
 }
