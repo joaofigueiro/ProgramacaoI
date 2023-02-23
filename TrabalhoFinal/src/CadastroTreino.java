@@ -1,6 +1,7 @@
 
 import data_base.connection.controllers.AlunoController;
 import data_base.connection.controllers.ExercicioController;
+import data_base.connection.controllers.TreinoController;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
 public class CadastroTreino extends javax.swing.JFrame {
 
     private static String dbName = "C:\\Users\\marqu\\OneDrive\\Área de Trabalho\\Arquivos de Programação\\programacao_i\\TrabalhoFinal\\src\\connection\\banco_de_dados";
-    
     /**
      * Creates new form CadastroTreino
      */
@@ -48,13 +48,13 @@ public class CadastroTreino extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jcbExercicio = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jtfTreino1 = new javax.swing.JTextField();
         jtfTreino = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtExercicio = new javax.swing.JTable();
@@ -121,12 +121,6 @@ public class CadastroTreino extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Séries:");
 
-        jcbExercicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbExercicioActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Exercícios:");
 
         jButton1.setText("Salvar");
@@ -142,6 +136,13 @@ public class CadastroTreino extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Repetições:");
 
+        jtfTreino1.setText("jTextField2");
+        jtfTreino1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfTreino1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -151,8 +152,8 @@ public class CadastroTreino extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jcbExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtfTreino1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -168,15 +169,15 @@ public class CadastroTreino extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jtfTreino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -287,7 +288,7 @@ public class CadastroTreino extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcbAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlunoActionPerformed
-        // TODO add your handling code here:
+        int alunoSelecionado = (jcbAluno.getSelectedIndex() + 1);
     }//GEN-LAST:event_jcbAlunoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -298,14 +299,25 @@ public class CadastroTreino extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jcbExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbExercicioActionPerformed
-        
-    }//GEN-LAST:event_jcbExercicioActionPerformed
-
     private void jtfTreinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTreinoActionPerformed
         String input = this.jtfTreino.getText().trim().toUpperCase();
-        S
+        TreinoController treino = new TreinoController(this.dbName);
+        try {
+            treino.conectar();
+
+            treino.getTreino();
+            
+            treino.desconectar();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroTreino.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println(input);
     }//GEN-LAST:event_jtfTreinoActionPerformed
+
+    private void jtfTreino1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTreino1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfTreino1ActionPerformed
     
     private void getExerc() throws Exception {
         try {
@@ -316,7 +328,7 @@ public class CadastroTreino extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel(new String[]{"Exercicio"}, 0);
             while(rset.next()) {
                 model.addRow(new Object[]{rset.getString("nome_exercicio")});
-                jcbExercicio.addItem(rset.getString("nome_exercicio"));
+//                jcbExercicio.addItem(rset.getString("nome_exercicio"));
             }
             
             jtExercicio.setModel(model);
@@ -397,8 +409,8 @@ public class CadastroTreino extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JComboBox<String> jcbAluno;
-    private javax.swing.JComboBox<String> jcbExercicio;
     private javax.swing.JTable jtExercicio;
     private javax.swing.JTextField jtfTreino;
+    private javax.swing.JTextField jtfTreino1;
     // End of variables declaration//GEN-END:variables
 }
