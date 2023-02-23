@@ -199,17 +199,17 @@ public class CadastroTreino extends javax.swing.JFrame {
 
         jtExercicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Exercicio"
+                "Exercicio", "Repetições", "Séries"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -303,7 +303,8 @@ public class CadastroTreino extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbExercicioActionPerformed
 
     private void jtfTreinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTreinoActionPerformed
-        // TODO add your handling code here:
+        String input = this.jtfTreino.getText().trim().toUpperCase();
+        S
     }//GEN-LAST:event_jtfTreinoActionPerformed
     
     private void getExerc() throws Exception {
