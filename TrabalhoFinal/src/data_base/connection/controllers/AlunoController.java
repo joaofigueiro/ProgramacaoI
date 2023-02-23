@@ -74,4 +74,30 @@ public class AlunoController extends DBConnection {
         }
         return rset;
     }
+    
+     /**
+     * Faz select em todos os alunos cadastrados no banco
+     * @throws java.lang.Exception
+     * @param int - alunoSelecionado no input
+     * @return 
+     */
+    public ResultSet getTreinoAluno(int alunoSelecionado)throws Exception {
+        String sel = "SELECT " +
+            "t.codigo_treino," +
+            "a.codigo_aluno," +
+            "treino_nome " +
+            "FROM treinos t " +
+                "LEFT JOIN alunos a ON " +
+                    "t.codigo_aluno = a.codigo_aluno " +
+                    "WHERE a.codigo_aluno = " + alunoSelecionado +
+                    " ORDER BY t.codigo_treino";
+        ResultSet rset = null;
+        try {
+            Statement stmt = this.dbConn.createStatement();
+            rset = stmt.executeQuery(sel) != null ? stmt.executeQuery(sel) : null ;
+        } catch (SQLException e) {
+            throw new Exception("Erro ao pegar dado: " + e.getMessage());
+        }
+        return rset;
+    }
 }

@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,12 +21,13 @@ public class ExercicioController extends DBConnection {
         super(dbName);
     }
     
-    public void salvaExercicio(String exercicio) throws Exception {
-        String insert = "INSERT INTO exercicios (nome_exercicio) VALUES (?)";
+    public void salvaExercicio(String exercicio, int numero) throws Exception {
+        String insert = "INSERT INTO exercicios (nome_exercicio, codigo_treino) VALUES (?, ?)";
         PreparedStatement stmt;
          try {
             stmt = this.dbConn.prepareStatement(insert);
-            stmt.setString(1, exercicio);
+            stmt.setString(1, exercicio);            
+            stmt.setInt(2, numero);
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new Exception("Erro ao inserir dado: " + e.getMessage());
@@ -47,8 +49,22 @@ public class ExercicioController extends DBConnection {
         } catch (SQLException e) {
             throw new Exception("Erro ao pegar dado: " + e.getMessage());
         }
-        System.out.println(rset.getString("nome_exercicio"));
         return rset;
     }
+    
+    public ResultSet getExerc(int codigoTreino) throws Exception {
+        String sel = "SELECT nome_exercicio FROM exercicios "
+                + "WHERE codigo_treino = " + codigoTreino;
+        ResultSet rset = null;
+        try {
+            Statement stmt = this.dbConn.createStatement();
+            rset = stmt.executeQuery(sel);
+            System.out.println(sel);
+        } catch (SQLException e) {
+            throw new Exception("Erro ao pegar dado: " + e.getMessage());
+        }
+        return rset;
+    }
+    
     
 }
